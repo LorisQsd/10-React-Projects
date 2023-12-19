@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root{
+  :root {
+    font-family: Inter, Helvetica, sans-serif;
     line-height: 1.5;
 
     color-scheme: light dark;
@@ -57,5 +58,5 @@ textarea,
 button,
 select,
 a {
-    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }

@@ -14,6 +14,8 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
+
+      <div className='h-[2px] rounded-full w-3/4 bg-white block mx-auto my-4' role='separator' />
     </header>
   );
 }

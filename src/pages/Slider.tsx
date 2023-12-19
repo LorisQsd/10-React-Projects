@@ -1,5 +1,5 @@
 export default function Slider() {
     return (
-      <div>Slider</div>
+      <div className="text-center text-3xl">SLIDER REACT</div>
     )
   }
