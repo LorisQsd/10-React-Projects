@@ -1,16 +1,31 @@
 import { SlArrowLeft } from 'react-icons/sl';
 import { SlArrowRight } from 'react-icons/sl';
-import japan1 from '../assets/images/japan1.avif';
-import japan2 from '../assets/images/japan2.avif';
-import japan3 from '../assets/images/japan3.avif';
-import japan4 from '../assets/images/japan4.avif';
-import japan5 from '../assets/images/japan5.avif';
+import japan1 from '../assets/images/japan1.webp';
+import japan2 from '../assets/images/japan2.webp';
+import japan3 from '../assets/images/japan3.webp';
+import japan4 from '../assets/images/japan4.webp';
+import japan5 from '../assets/images/japan5.webp';
 import { useState } from 'react';
+import useInterval from '../hooks/useInterval';
+
+import SliderButton from '../components/buttons/SliderButton';
+
+// Ce slider fait vraiment du rendu conditionnel et non du css conditionnel
 
 export default function Slider() {
   const images = [japan1, japan2, japan3, japan4, japan5];
 
   const [current, setCurrent] = useState(1);
+
+  // Delay in milliseconds
+  const DELAY = 5000;
+  useInterval(
+    () => {
+      handleNextClick();
+    },
+    DELAY,
+    current
+  );
 
   const handleNextClick = () => {
     current === images.length ? setCurrent(1) : setCurrent((prev) => prev + 1);
@@ -29,21 +44,15 @@ export default function Slider() {
       </p>
 
       <div className="flex items-center justify-between max-w-xl mx-auto">
-        <button
-          className="flex items-center justify-center duration-150 border-2 border-white border-solid rounded-full size-10 hover:scale-105"
-          onClick={handlePrevClick}
-        >
-          <SlArrowLeft />
-        </button>
+        <SliderButton onClick={handlePrevClick} Icon={SlArrowLeft} />
 
-        <img className="h-64 w-96" src={japan1} alt="Slider" />
+        <img
+          className="h-64 w-96"
+          src={images[current - 1]}
+          alt="Slider Image"
+        />
 
-        <button
-          className="flex items-center justify-center duration-150 border-2 border-white border-solid rounded-full size-10 hover:scale-105"
-          onClick={handleNextClick}
-        >
-          <SlArrowRight />
-        </button>
+        <SliderButton onClick={handleNextClick} Icon={SlArrowRight} />
       </div>
     </section>
   );
