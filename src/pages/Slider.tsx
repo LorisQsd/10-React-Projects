@@ -17,23 +17,29 @@ export default function Slider() {
 
   const [current, setCurrent] = useState(1);
 
+  const toggleImage = (indexPayload: number) => {
+    let newState: number;
+
+    if (indexPayload + current > images.length) {
+      newState = 1;
+    } else if (indexPayload + current < 1) {
+      newState = images.length;
+    } else {
+      newState = indexPayload + current;
+    }
+
+    setCurrent(newState);
+  };
+
   // Delay in milliseconds
   const DELAY = 5000;
   useInterval(
     () => {
-      handleNextClick();
+      toggleImage(1);
     },
     DELAY,
     current
   );
-
-  const handleNextClick = () => {
-    current === images.length ? setCurrent(1) : setCurrent((prev) => prev + 1);
-  };
-
-  const handlePrevClick = () => {
-    current === 1 ? setCurrent(images.length) : setCurrent((prev) => prev - 1);
-  };
 
   return (
     <section className="px-4">
@@ -44,7 +50,7 @@ export default function Slider() {
       </p>
 
       <div className="flex items-center justify-between max-w-xl mx-auto">
-        <SliderButton onClick={handlePrevClick} Icon={SlArrowLeft} />
+        <SliderButton onClick={() => toggleImage(-1)} Icon={SlArrowLeft} />
 
         <img
           className="h-64 w-96"
@@ -52,7 +58,7 @@ export default function Slider() {
           alt="Slider Image"
         />
 
-        <SliderButton onClick={handleNextClick} Icon={SlArrowRight} />
+        <SliderButton onClick={() => toggleImage(1)} Icon={SlArrowRight} />
       </div>
     </section>
   );
