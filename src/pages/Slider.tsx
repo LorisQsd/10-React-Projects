@@ -1,10 +1,10 @@
 import { SlArrowLeft } from 'react-icons/sl';
 import { SlArrowRight } from 'react-icons/sl';
-import japan1 from '../assets/images/japan1.webp';
-import japan2 from '../assets/images/japan2.webp';
-import japan3 from '../assets/images/japan3.webp';
-import japan4 from '../assets/images/japan4.webp';
-import japan5 from '../assets/images/japan5.webp';
+import japan1 from '/images/japan1.webp';
+import japan2 from '/images/japan2.webp';
+import japan3 from '/images/japan3.webp';
+import japan4 from '/images/japan4.webp';
+import japan5 from '/images/japan5.webp';
 import { useState } from 'react';
 import useInterval from '../hooks/useInterval';
 
