@@ -5,17 +5,23 @@ export default function Navbar() {
 
   return (
     <header>
-      <h1 className="font-bold text-4xl text-center py-4">10 Projets React</h1>
+      <h1 className="py-4 text-4xl font-bold text-center">10 Projets React</h1>
 
       <nav>
-        <ul className="flex justify-center text-lg">
-          <li className={`${navlinkStyle}`}>
+        <ul className="flex justify-center gap-2 text-lg">
+          <li className={navlinkStyle}>
             <Link to={'/slider'}>1. Slider</Link>
+          </li>
+          <li className={navlinkStyle}>
+            <Link to={'/weather'}>2. Weather</Link>
           </li>
         </ul>
       </nav>
 
-      <div className='h-[2px] rounded-full w-3/4 bg-white block mx-auto my-4' role='separator' />
+      <div
+        className="h-[2px] rounded-full w-3/4 bg-white block mx-auto my-4"
+        role="separator"
+      />
     </header>
   );
 }
