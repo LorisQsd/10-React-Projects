@@ -20,7 +20,7 @@ export default function useFetch(url: string) {
 
         if (!response.ok) {
           return setData((prevState) => {
-            return { ...prevState, error: true };
+            return { ...prevState, error: true, loading: false };
           });
         }
 
@@ -31,6 +31,9 @@ export default function useFetch(url: string) {
         });
       } catch (error) {
         console.error(error);
+        setData((prevState) => {
+          return { ...prevState, error: true, loading: false };
+        });
       }
     };
 
