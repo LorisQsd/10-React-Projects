@@ -44,7 +44,7 @@ export default function Weather() {
   if (loading) {
     content = <Loader />;
   } else if (error) {
-    content = <Error />;
+    content = <Error error={error} />;
   } else {
     content = <Content weatherData={weatherData as TWeatherData} />;
   }

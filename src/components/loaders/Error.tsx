@@ -1,4 +1,4 @@
-export default function Error() {
+export default function Error({ error }: { error: string }) {
   return (
     <>
       <img
@@ -6,9 +6,7 @@ export default function Error() {
         alt="Error icon"
         className="block mx-auto"
       />
-      <p className="italic font-semibold text-center text-red-600">
-        An error has occured...
-      </p>
+      <p className="italic font-semibold text-center text-red-600">{error}</p>
     </>
   );
 }

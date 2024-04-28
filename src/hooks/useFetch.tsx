@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 type TData = {
   loading: boolean;
-  error: boolean;
+  error?: string | null;
   data?: {};
 };
 
 export default function useFetch(url: string) {
   const [data, setData] = useState<TData>({
     loading: true,
-    error: false,
+    error: null,
     data: undefined,
   });
 
@@ -19,20 +19,20 @@ export default function useFetch(url: string) {
         const response = await fetch(url);
 
         if (!response.ok) {
-          return setData((prevState) => {
-            return { ...prevState, error: true, loading: false };
-          });
+          throw new Error(
+            `An error has occured - ${response.status} : ${response.statusText}`
+          );
         }
 
         const data = await response.json();
 
         setData((prevState) => {
-          return { ...prevState, data, loading: false };
+          return { ...prevState, data, loading: false, error: null };
         });
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         setData((prevState) => {
-          return { ...prevState, error: true, loading: false };
+          return { ...prevState, error: error.message, loading: false };
         });
       }
     };
